@@ -6,6 +6,9 @@ import initWebRoute from './route/web'
 
 require('dotenv').config()
 
+app.use(express.urlencoded({extended: true}));
+app.use(express.json())
+
 const port = process.env.PORT || 3001;
 //setup view engine
 configViewEngine(app)
