@@ -5,7 +5,7 @@ let route = express.Router();
 
 const initWebRoute = (app) => {
   route.get("/", homeController.getHomePage);
-
+  route.get('/detail/user/:userId',homeController.getDetailPage)
   route.get("/html", (req, res) => {
     res.sendFile(path.join(__dirname, "./index.html"));
   });
