@@ -1,16 +1,17 @@
 const express = require('express')
 const app = express()
-const port = 3000
-import configViewEngine from './configs/viewEngine'
+import configViewEngine from './configs/viewEngine';
+import initWebRoute from './route/web'
+// import connection from './configs/connectDB'
 
+require('dotenv').config()
+
+const port = process.env.PORT || 3001;
+//setup view engine
 configViewEngine(app)
-app.get('/', (req, res) => {
-  res.render('index.ejs')
-})
 
-app.get('/html', (req, res) => {
-    res.sendFile(path.join(__dirname, './index.html'))
-  })
+//init web route
+initWebRoute(app);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
